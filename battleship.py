@@ -42,7 +42,7 @@ def help(game, message):
     Patrol:       ##       Size: 2
 
 The following commands are available:
-    place "ship" "range" - Places a ship in a valid range: (place cruisier B2-B6)
+    place "ship" "range" - Places a ship in a valid range: (place cruiser B2-B6)
     start - Starts game after ships have been placed
     quit - Quits the program\n""")
 
@@ -71,10 +71,7 @@ def validate_range(game, command_list):
     elif not (range_list[0][1].isdigit() or range_list[0][1].isdigit()):
         return False, f"""Error: "{command_list[2]}" is not a valid range."""
 
-    elif not ('A' <= range_list[0][0] <= 'J' and 1 <= int(range_list[0][1]) <= 10):
-        return False, f"""Error: "{command_list[2]}" is not a valid range."""
-
-    elif not ('A' <= range_list[1][0] <= 'J' and 1 <= int(range_list[1][1]) <= 10):
+    elif not ('A' <= range_list[0][0].upper() <= 'J' and 1 <= int(range_list[0][1]) <= 10):
         return False, f"""Error: "{command_list[2]}" is not a valid range."""
 
     else:
@@ -112,24 +109,6 @@ def process_commands(game):
 
     return True
 
-    # if command[0].lower() == "":
-    #     run_login()
-    # elif command.lower() == "logout":
-    #     run_logout()
-    # elif not user_name or not user_email:
-    #     raise Exception("Please Login")
-    # elif command.lower() == "help":
-    #     run_help()
-    # elif command.lower() == "calendar":
-    #     run_calendar()
-    # elif command.lower() == "host":
-    #     run_host(user_email, user_name)
-    # elif command.lower() == "attend":
-    #     run_attend(user_email, user_name)
-    # elif command.lower() == "delete":
-    #     run_delete(user_email, user_name)
-    # else:
-    #     raise Exception(f""""{command}" is not a valid command""")
 
 def run_game():
     """Runs the game from beginning."""
